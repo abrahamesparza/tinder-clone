@@ -6,12 +6,9 @@ import SwipeButtons from './SwipeButtons.js';
 function App() {
   return (
     <div className="app">
-      {/* HEADER / TOP*/}
       <Header />
-      {/* INDER CARDS / MIDDLE*/}
       <TinderCards />
       <SwipeButtons />
-      {/* SWIPE BUTTONS / BOTTOM */}
     </div>
   );
 }

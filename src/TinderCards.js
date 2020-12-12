@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TinderCard from 'react-tinder-card';
 import './TinderCards.css'
+import axios from './axios.js';
+
 
 const TinderCards = () => {
-  const [people, setPeople] = useState([
-    {
-      name: 'Elon Musk',
-      url: 'https://cdnassets.hw.net/03/ac/c043ba6040ba9d8e1d22240825b7/elon-musk-the-summit-2013.jpg'
-    },
-    {
-      name: 'Jeff Bezos',
-      url: 'https://voicebot.ai/wp-content/uploads/2019/08/jeff-bezos-headshot.jpg'
+  const [people, setPeople] = useState([]);
+
+  //similar to componentDidMount, a hook needs to be imported from react
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const req = await axios.get('/tinder/cards');
+
+        setPeople(req.data);
+      } catch (err) {
+        console.error(err);
+      }
     }
-  ])
+    fetchData();
+  }, [])
+
   return (
     <div className='tinderCards'>
       <div className='tinderCards_cardContainer'>
