@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const connectionUrl = `mongodb+srv://admin:cpvgl82BtqJd6Z7c@cluster0.hevr4.mongodb.net/tinderdb?retryWrites=true&w=majority`
+let connectionUrl = require('./mongoUrl.js').connectionUrl;
 
 mongoose.connect(connectionUrl, {
   useNewUrlParser: true,
